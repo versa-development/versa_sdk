@@ -12,6 +12,8 @@ local function structureResponse(data)
   })
 end
 
+bridge.Name = 'qbox'
+
 function bridge.GetPlayer(source)
   local player = exports.qbx_core:GetPlayer(source)
   if not player then return false end

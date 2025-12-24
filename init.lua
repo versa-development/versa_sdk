@@ -3,9 +3,12 @@ local log = require 'utils/logger'
 
 CURRENT_VERSION = GetResourceMetadata(GetCurrentResourceName(), 'version') or '0.0.0'
 
+exports('Framework', function()
+    return config.Framework
+end)
+
 -- Duplicity checks if the code ran is the server or client. returns true if server
 if IsDuplicityVersion() then
-
     -- ensure all random functions are properly seeded
     math.randomseed(os.time())
 

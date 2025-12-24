@@ -12,6 +12,8 @@ local function structureResponse(data)
   })
 end
 
+bridge.Name = 'esx'
+
 function bridge.GetPlayer(source)
   local player = exports.esx_core:GetPlayer(source)
   if not player then return false end

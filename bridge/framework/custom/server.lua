@@ -22,6 +22,8 @@ local function structureResponse(data)
   })
 end
 
+bridge.Name = 'custom'
+
 function bridge.GetPlayer(source)
   local player = -- TODO:Function to get the character data from the source passed by the function
   if not player then return false end
@@ -62,5 +64,9 @@ end
 function bridge.RemoveMoney(source, type, amount, reason)
   return -- TODO:Function to remove money from the source, type, amount and reason
 end
+
+-- LAST STEP TODO: - EVENTS
+-- You must implement your framework player loaded/unloaded events in
+-- runtime/framework/server.lua, all other framework examples are already in the file
 
 return bridge
