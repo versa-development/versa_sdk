@@ -60,5 +60,24 @@ function bridge.RemoveEntity(data)
   return exports.ox_target:removeLocalEntity(entities, 'sdk')
 end
 
+--- add a sphere zone for a target
+-- @param data table
+-- @return any
+function bridge.AddSphereZone(sphere, data)
+  local targetOptions = formatTargetData(data)
+
+  return exports.ox_target:addSphereZone({
+    coords = sphere.coords,
+    radius = sphere.radius,
+    debug = sphere.debug or false,
+    drawSprite = sphere.drawSprite or false,
+    options = targetOptions
+  })
+end
+
+function bridge.RemoveZone(zone)
+  return exports.ox_target:removeZone(zone)
+end
+
 -- Send the module object
 return bridge
