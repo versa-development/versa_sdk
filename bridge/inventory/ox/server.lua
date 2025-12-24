@@ -17,4 +17,12 @@ function bridge.HasItem(inventoryId, item, metadata)
   return false, 0
 end
 
+function bridge.CreateStash(key, data)
+  return exports.ox_inventory:RegisterStash(key, data.label, data.slots, data.weight, data.owner, data.groups, data.coords)
+end
+
+function bridge.OpenStash(source, key)
+  return exports.ox_inventory:forceOpenInventory(source, 'stash', key)
+end
+
 return bridge
