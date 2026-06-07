@@ -15,5 +15,10 @@ elseif framework.Name == 'qbcore' then
 elseif framework.Name == 'esx' then
   
 else
-  error('Missing Framework Runtime setup for: ' .. tostring(framework.Name))
+  CreateThread(function()
+    while true do
+      error('Missing Framework Runtime setup for framework: ' .. tostring(framework.Name))
+      Wait(5000)
+    end
+  end)
 end
