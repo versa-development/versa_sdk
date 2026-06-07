@@ -45,12 +45,17 @@ local function createChunkEntity(zoneId, data)
   FreezeEntityPosition(objectId, true)
   SetEntityInvincible(objectId, true)
   SetEntityAsMissionEntity(objectId, true, true)
-  SetModelAsNoLongerNeeded(data.model)
+  
+  if data.rotation then
+    SetEntityRotation(objectId, data.rotation.x, data.rotation.y, data.rotation.z, (data.rotation.order or 2), (data.rotation.relative or true))
+  end
 
   if data.target then
     data.target.entity = objectId
     Target.AddEntity(data.target)
   end
+
+  SetModelAsNoLongerNeeded(data.model)
 
   return objectId
 end
@@ -98,6 +103,10 @@ local function editChunkEntity(key, data)
       if data.coords then 
         SetEntityCoords(objectId, data.coords.x, data.coords.y, data.coords.z, false, false, false, true) 
         if data.coords.w then SetEntityHeading(objectId, data.coords.w) end
+      end
+
+      if data.rotation then
+        SetEntityRotation(objectId, data.rotation.x, data.rotation.y, data.rotation.z, (data.rotation.order or 2), (data.rotation.relative or true))
       end
 
       if data.target then
@@ -176,6 +185,7 @@ local function editCachedChunkEntity(key, data)
     if zone.entities[i].key == key then
       if data.coords then zone.entities[i].coords = data.coords end
       if data.model then zone.entities[i].model = data.model end
+      if data.rotation then zone.entities[i].rotation = data.rotation end
 
       if data.target then
         zone.entities[i].target = data.target

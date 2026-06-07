@@ -40,6 +40,7 @@ local function editChunkEntity(key, data)
 
   if data.coords then oldChunkData.coords = data.coords end
   if data.model then oldChunkData.model = data.model end
+  if data.rotation then oldChunkData.rotation = data.rotation end
 
   if data.target then
     oldChunkData.target = data.target

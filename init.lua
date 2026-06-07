@@ -17,7 +17,6 @@ if IsDuplicityVersion() then
 
     -- Dependency Checks and Version Logging
     if not lib.checkDependency('ox_lib', '3.20.0', true) then error('ox_lib v3.20.0 or higher is required for Versa SDK to function properly.') end
-    if not lib.checkDependency('oxmysql', '2.12.0', true) then error('oxmysql v2.12.0 or higher is required for Versa SDK to function properly.') end
 
     -- SDK Version Check
     PerformHttpRequest(('https://api.github.com/repos/versa-development/versa_sdk/releases/latest'), function(status, response)
