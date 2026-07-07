@@ -27,6 +27,7 @@ local function createChunkEntity(zoneId, data)
     return false, 'Failed to load model'
   end
 
+  local objectId
   if data.type == 'object' then
     objectId = CreateObject(data.model, data.coords.x, data.coords.y, data.coords.z, false, false, false)
   elseif data.type == 'ped' then
@@ -81,6 +82,8 @@ local function deleteChunkEntity(zoneId, key)
     else
       log.warn('Unknown entity type for chunk entity with key:', key, 'in zone:', zoneId)
     end
+
+    Target.RemoveEntity({ entity = objectId })
 
     CreatedEntities[zoneId][key] = nil
     log.debug('Deleted chunk entity:', key, 'in zone:', zoneId)
